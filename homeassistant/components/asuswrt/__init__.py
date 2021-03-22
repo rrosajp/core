@@ -127,7 +127,7 @@ async def async_setup_entry(hass: HomeAssistantType, entry: ConfigEntry):
 
     # Device ID was changed. Link up old device to new one.
     dev_reg = device_registry.async_get(hass)
-    legacy_entry = dev_reg.async_get_device((DOMAIN, "AsusWRT"))
+    legacy_entry = dev_reg.async_get_device({(DOMAIN, "AsusWRT")})
     if legacy_entry and len(legacy_entry.identifiers) == 1:
         dev_reg.async_update_device(
             legacy_entry.id, new_identifiers=(DOMAIN, entry.entry_id)
